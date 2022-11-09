@@ -4,9 +4,9 @@ import generateHTML from "./src/generateHTML.js"
 
 
 
-const Engineer =require('./Engineer')
-const Intern =require('./Intern')
-const Manager =require('./Manager')
+import Engineer from "./lib/Engineer.js"
+import Intern from  "./lib/Intern.js"
+import Manager from  "./lib/Manager.js"
 
 
 const employeeData=[
@@ -19,7 +19,7 @@ const employeeData=[
 
 
 
-  
+
   // if(role="engineer"){
 // getOfficeNumber()
 // }
@@ -31,36 +31,104 @@ const employeeData=[
 // if(role=="intern"{
 // getSchool()
 // })
+const team = []
 
+const managerPrompt = () => {
+  return inquirer.prompt([
+{
+  type: 'input',
+  message: 'Enter the name of the team manager: ',
+  name: 'managerName',
+ 
+},
+{
+  type: "input",
+  message: "Enter employee ID: ",
+  name: "ID",
+},
+{
+  type: "input",
+  message: "Enter email address: ",
+  name: "email",
+},
+{
+  type: "input",
+  message: "Enter the office number of the team manager",
+  name: "officeNumber",
+}]).then(managerData => {
+  const {managerName, ID, email, officeNumber} = managerData;
+  const manager = new Manager(managerName, ID, email, officeNumber);
+  team.push(manager)
+  console.log(manager)
+})
+};
 
-const questions = [{
-    type: 'input',
-    message: 'Enter the name of the team manager: ',
-    name: 'managerName',
-   
-  },
-  {
-    type: "input",
-    message: "Enter employee ID: ",
-    name: "ID",
-  },
-  {
-    type: "input",
-    message: "Enter email address: ",
-    name: "email",
-  },
-  {
-    type: "input",
-    message: "Eneter the office number of the team manager",
-    name: "officeNumber",
-  },
-  {
+const employeePrompt = () => {
+  return inquirer.prompt([{
     type: "list",
     message: "Select your position",
     name: "positionSelection",
     choices: ["Engineer", "Intern", "Finish"],
-  
   },
+{
+    type: 'input',
+    message: 'Enter the name of this Employee: ',
+    name: 'empName',
+},
+{
+  
+    type: "input",
+    message: "Enter employee ID: ",
+    name: "empID", 
+},
+{
+  type: "input",
+  message: "Enter email address: ",
+  name: "email",
+},
+{
+  type: "input",
+  message: "Enter Engineer Github Username",
+  name: "githubName",
+  when: (input) => input.positionSelection === "Engineer"
+},
+{
+  type: "input",
+  message: "Enter the school you attend: ",
+  name: "school",
+  when:(input)=> input.positionSelection==="Intern"
+},
+{
+  type: "confirm",
+  name: "addAnother",
+  message: "Would you like to add another employee",
+  default: false
+}]).then(employeeData => {
+  let {empName, empID, email, githubName,school, addAnother} = employeeData
+  let employee;
+  if(positionSelection === "Engineer") {
+    employee = new Engineer(empName, empID, email, githubName)
+    console.log(employee)
+  } else if(positionSelection === "Intern") {
+    employee = new Intern(empName, empID, email, school)
+    console.log(employee)
+  }
+  team.push(employee)
+  if(addAnother) {
+    return employeePrompt(team)
+  } else {
+    return team
+  }
+})
+}
+
+managerPrompt()
+.then(employeePrompt)
+
+
+
+const questions = [
+ 
   {
     type: "input",
     message: "Enter your name: ",
@@ -75,6 +143,7 @@ const questions = [{
     type: "input",
     message: "Enter the school you attend: ",
     name: "school",
+    when:(input)=> input.school==="Intern"
   },
 ]
 
@@ -92,14 +161,14 @@ const questions = [{
 
 
 function init() {
-    inquirer.prompt(questions)
-    .then((userInput) => {
-      //console.log("generate file");
-      writeToFile("index.html", '??generateHTML??'(userInput));
-    });
+    // inquirer.prompt(questions)
+    // .then((userInput) => {
+    //   //console.log("generate file");
+    //   writeToFile("index.html", '??generateHTML??'(userInput));
+    // });
   }
   
-  init();
+  // init();
 
 
 
