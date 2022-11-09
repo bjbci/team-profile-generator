@@ -1,6 +1,7 @@
 {
   "name": "team-profile-generator",
   "version": "1.0.0",
+  "type":"module",
   "description": "week 10 homework assignment",
   "main": "index.js",
   "scripts": {
