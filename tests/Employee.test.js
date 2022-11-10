@@ -1,24 +1,18 @@
 const Employee=require('../lib/Employee.js')
 
 //describe("Employee constructor", ()=>{
-    it("returns an Employee object", ()=>{
+    test("returns an Employee object", ()=>{
         //arrainge
-        //const name="Brian"
-        //const id=6666
-        //const email="bajebi@mac.com"
         //act
         const employee=new Employee()
-        console.log(employee)
-
-        //assert
+        
+         //assert
         expect(typeof(employee)).toBe("object")
      })
 
     it("has a name", ()=>{
         const name="Brian";
-        //const id=6666
-        //const email="bajebi@mac.com" 
-        //act
+        
         const employee=new Employee(name)
  
          //assert
@@ -27,61 +21,51 @@ const Employee=require('../lib/Employee.js')
     })
 
     it("has an Id", ()=>{
-        //const name="Brian"
-        const test=6666
-       // const email="bajebi@mac.com"
-         //act
-        const employee=new Employee('name',test)
+       
+        const testValue=6666
+       
+        const employee=new Employee('name',testValue)
 
-        //assert
-        expect(employee.id).toBe(test)
+        expect(employee.id).toBe(testValue)
     })
 
     it("has an email", ()=>{
-        //const name="Brian"
-        //const id=6666
-        const test="bajebi@mac.com"
-         //act
-        const employee=new Employee(test)
+        
+        const testValue="bajebi@mac.com"
+         
+        const employee=new Employee("name", 6666,testValue)
 
         //assert
-        expect(employee.email).toBe(test)
+        expect(employee.email).toBe(testValue)
     })
 
     it("has a name getName()", ()=>{
-        const name="Brian";
-        //const id=6666
-        //const email="bajebi@mac.com" 
-        //act
-        const employee=new Employee(name)
+        const testValue="Brian";
+       
+        const employee=new Employee(testValue)
  
-         //assert
-        expect(employee.getName()).toBe(name)
+        expect(employee.getName()).toBe(testValue)
         
     })
 
     it("has an Id getID()", ()=>{
-        //const name="Brian"
-        const test=6666
-       // const email="bajebi@mac.com"
-         //act
-        const employee=new Employee('name',test)
+       
+        const testValue=6666
+       
+        const employee=new Employee('name',testValue)
 
-        //assert
-        expect(employee.getId()).toBe(test)
+        expect(employee.getId()).toBe(testValue)
     })
 
     it("has an email getEmail()", ()=>{
-        //const name="Brian"
-        //const id=6666
-        const test="bajebi@mac.com"
-         //act
-        const employee=new Employee(test)
+        
+        const testValue="bajebi@mac.com"
+        
+        const employee=new Employee("name",6666,testValue)
 
-        //assert
-        expect(employee.getEmail()).toBe(test)
+        expect(employee.getEmail()).toBe(testValue)
     })
-
+    
 
 
 
