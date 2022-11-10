@@ -160,34 +160,5 @@ const questions = [
 
 
 
-function init() {
-    // inquirer.prompt(questions)
-    // .then((userInput) => {
-    //   //console.log("generate file");
-    //   writeToFile("index.html", '??generateHTML??'(userInput));
-    // });
-  }
-  
-  // init();
-
-
-
-
-
-// const Employee =require('./Employee')
-// const Intern =require('./Intern')
-// const Manager =require('./Manager')
-// const Engineer =require('./Engineer')
-// const Workplace = require('./lib/Workplace')
-
-// const employees=[
-//     new Engineer("engineer",'brian',6666,'bajebi@mac.com'),
-//     new Intern(),
-//     new Manager(),
-//     new Engineer("engineer",'doug',2266,'doug@mac.com'),
-//     new Engineer("engineer",'steve',ou812,'wahwahi@mac.com')
-// ]
-
-// const Workplace=new Workplace('xxxx','bbbbb','rrrrr')
-
-// Workplace.printCard()    //print card is method in ZOO
+function init() {}
+ 
