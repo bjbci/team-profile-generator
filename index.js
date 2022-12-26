@@ -1,3 +1,6 @@
+console.log($)
+
+
 import fs from"fs";
 import inquirer from "inquirer";
 import generateHTML from "./src/generateHTML.js"
@@ -7,8 +10,15 @@ import generateHTML from "./src/generateHTML.js"
 import Engineer from "./lib/Engineer.js"
 import Intern from  "./lib/Intern.js"
 import Manager from  "./lib/Manager.js"
+///////////////////////////////////////////////
+let employeeName=$('#employeeName')
+console.log(employeeName)
 
 
+
+
+
+////////////////////////////////////////////
 const employeeData=[
   //     new Engineer("engineer",'brian',6666,'bajebi@mac.com'),
   //     new Intern(),
